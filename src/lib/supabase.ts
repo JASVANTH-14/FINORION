@@ -19,8 +19,12 @@ export interface SanctionEntity {
 
 export interface ScreeningResult {
   id?: string;
+  customer_id: string;
   customer_name: string;
   customer_country: string;
+  entity_type: string;
+  date_of_birth: string;
+  account_number: string;
   device_ip: string;
   similarity_score: number;
   country_risk_score: number;

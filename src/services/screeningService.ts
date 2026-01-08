@@ -76,8 +76,12 @@ function getCountryRiskScore(country: string): number {
 }
 
 export async function performScreening(
+  customerId: string,
   customerName: string,
   customerCountry: string,
+  entityType: string,
+  dateOfBirth: string,
+  accountNumber: string,
   deviceIp: string
 ): Promise<ScreeningResult> {
   const { data: watchlist, error } = await supabase
@@ -193,8 +197,12 @@ export async function performScreening(
   };
 
   const result: ScreeningResult = {
+    customer_id: customerId,
     customer_name: customerName,
     customer_country: customerCountry,
+    entity_type: entityType,
+    date_of_birth: dateOfBirth,
+    account_number: accountNumber,
     device_ip: deviceIp,
     similarity_score: parseFloat(highestSimilarity.toFixed(2)),
     country_risk_score: countryRisk,

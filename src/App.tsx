@@ -1,34 +1,26 @@
-import { useState, useRef } from 'react';
-import { Search, Download, Upload, Shield, Activity, Brain, Network, FileCheck } from 'lucide-react';
+import { useState } from 'react';
+import { Search, Download, Shield, Activity, Brain, Network, FileCheck } from 'lucide-react';
 import { performScreening } from './services/screeningService';
 import { getDeviceIP } from './utils/ipUtils';
 import { generatePDFReport } from './utils/pdfGenerator';
 import ResultsDisplay from './components/ResultsDisplay';
 import { ScreeningResult } from './lib/supabase';
+import logoImage from '/public/whatsapp_image_2025-12-16_at_19.41.38_61d2c9de.jpg';
 
 function App() {
+  const [customerId, setCustomerId] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [customerCountry, setCustomerCountry] = useState('');
+  const [entityType, setEntityType] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<ScreeningResult | null>(null);
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setLogoUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleScreening = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!customerName.trim() || !customerCountry.trim()) {
+    if (!customerId.trim() || !customerName.trim() || !customerCountry.trim() || !entityType.trim() || !dateOfBirth.trim() || !accountNumber.trim()) {
       alert('Please fill in all required fields');
       return;
     }
@@ -38,8 +30,12 @@ function App() {
     try {
       const deviceIp = await getDeviceIP();
       const screeningResult = await performScreening(
+        customerId.trim(),
         customerName.trim(),
         customerCountry.trim(),
+        entityType.trim(),
+        dateOfBirth,
+        accountNumber.trim(),
         deviceIp
       );
 
@@ -54,48 +50,33 @@ function App() {
 
   const handleDownloadReport = () => {
     if (!result) return;
-    generatePDFReport(result, logoUrl || undefined);
+    generatePDFReport(result);
   };
 
   const handleReset = () => {
     setResult(null);
+    setCustomerId('');
     setCustomerName('');
     setCustomerCountry('');
+    setEntityType('');
+    setDateOfBirth('');
+    setAccountNumber('');
   };
 
   return (
     <div className="min-h-screen bg-[#112836] text-white">
       <header className="border-b-2 border-[#0A988B] bg-[#112836]/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Shield className="w-10 h-10 text-[#0A988B]" />
+          <div className="flex items-center gap-4">
+            <img
+              src={logoImage}
+              alt="Finorion Logo"
+              className="w-14 h-14 object-contain"
+            />
             <div>
               <h1 className="text-3xl font-bold tracking-wide">FINORION</h1>
               <p className="text-sm text-gray-400">Advanced Sanction Screening Platform</p>
             </div>
-          </div>
-          <div className="flex items-center gap-4">
-            {logoUrl && (
-              <img
-                src={logoUrl}
-                alt="Logo"
-                className="w-12 h-12 object-contain rounded-lg border-2 border-[#0A988B]"
-              />
-            )}
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className="flex items-center gap-2 px-4 py-2 bg-[#0A988B] hover:bg-[#0A988B]/80 rounded-lg transition-all duration-200 text-sm font-medium"
-            >
-              <Upload className="w-4 h-4" />
-              {logoUrl ? 'Change Logo' : 'Upload Logo'}
-            </button>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleLogoUpload}
-              className="hidden"
-            />
           </div>
         </div>
       </header>
@@ -144,6 +125,20 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
+                  Customer ID <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={customerId}
+                  onChange={(e) => setCustomerId(e.target.value)}
+                  placeholder="Enter customer ID"
+                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white placeholder-gray-500"
+                  disabled={isLoading}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
                   Customer Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -186,6 +181,52 @@ function App() {
                   <option value="Yemen">Yemen</option>
                   <option value="Belarus">Belarus</option>
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Entity Type <span className="text-red-500">*</span>
+                </label>
+                <select
+                  value={entityType}
+                  onChange={(e) => setEntityType(e.target.value)}
+                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white"
+                  disabled={isLoading}
+                >
+                  <option value="">Select entity type</option>
+                  <option value="Individual">Individual</option>
+                  <option value="Organization">Organization</option>
+                  <option value="Business">Business</option>
+                  <option value="Financial Institution">Financial Institution</option>
+                  <option value="Government">Government</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Date of Birth <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="date"
+                  value={dateOfBirth}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
+                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white"
+                  disabled={isLoading}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Account Number <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={accountNumber}
+                  onChange={(e) => setAccountNumber(e.target.value)}
+                  placeholder="Enter account number"
+                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white placeholder-gray-500"
+                  disabled={isLoading}
+                />
               </div>
             </div>
 

@@ -50,6 +50,10 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
           </h3>
           <div className="space-y-4 text-white">
             <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+              <span className="text-gray-300">Customer ID:</span>
+              <span className="font-semibold">{result.customer_id}</span>
+            </div>
+            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
               <span className="text-gray-300">Customer Name:</span>
               <span className="font-semibold">{result.customer_name}</span>
             </div>
@@ -58,10 +62,22 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
               <span className="font-semibold">{result.customer_country}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+              <span className="text-gray-300">Entity Type:</span>
+              <span className="font-semibold">{result.entity_type}</span>
+            </div>
+            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+              <span className="text-gray-300">Date of Birth:</span>
+              <span className="font-semibold">{result.date_of_birth}</span>
+            </div>
+            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+              <span className="text-gray-300">Account Number:</span>
+              <span className="font-mono text-sm">{result.account_number}</span>
+            </div>
+            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
               <span className="text-gray-300">Device IP:</span>
               <span className="font-mono text-sm">{result.device_ip}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3">
               <span className="text-gray-300">Screening Time:</span>
               <span className="text-sm">
                 {new Date(result.screening_timestamp).toLocaleString()}
