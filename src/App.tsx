@@ -64,8 +64,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#112836] text-white">
-      <header className="border-b-2 border-[#0A988B] bg-[#112836]/95 backdrop-blur-sm sticky top-0 z-50">
+    <div className="min-h-screen bg-cyberbg text-white">
+      <header className="border-b-2 border-neongreen bg-cyberbg/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <img
@@ -83,8 +83,8 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <Brain className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <Brain className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Context-Aware</h3>
             <p className="text-xs text-gray-400">Intelligent Screening</p>
           </div>
@@ -115,9 +115,9 @@ function App() {
           </div>
         </div>
 
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm mb-8">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm mb-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Search className="w-7 h-7 text-[#0A988B]" />
+            <Search className="w-7 h-7 text-neongreen" />
             Sanction Screening
           </h2>
 
@@ -132,7 +132,7 @@ function App() {
                   value={customerId}
                   onChange={(e) => setCustomerId(e.target.value)}
                   placeholder="Enter customer ID"
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white placeholder-gray-500"
                   disabled={isLoading}
                 />
               </div>
@@ -146,7 +146,7 @@ function App() {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="Enter full name"
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white placeholder-gray-500"
                   disabled={isLoading}
                 />
               </div>
@@ -158,7 +158,7 @@ function App() {
                 <select
                   value={customerCountry}
                   onChange={(e) => setCustomerCountry(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white"
                   disabled={isLoading}
                 >
                   <option value="">Select country</option>
@@ -190,7 +190,7 @@ function App() {
                 <select
                   value={entityType}
                   onChange={(e) => setEntityType(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white"
                   disabled={isLoading}
                 >
                   <option value="">Select entity type</option>
@@ -210,7 +210,7 @@ function App() {
                   type="date"
                   value={dateOfBirth}
                   onChange={(e) => setDateOfBirth(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white"
                   disabled={isLoading}
                 />
               </div>
@@ -224,7 +224,7 @@ function App() {
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
                   placeholder="Enter account number"
-                  className="w-full px-4 py-3 bg-[#112836] border-2 border-[#0A988B]/50 rounded-lg focus:border-[#0A988B] focus:outline-none transition-all text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white placeholder-gray-500"
                   disabled={isLoading}
                 />
               </div>
@@ -234,7 +234,7 @@ function App() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 bg-[#0A988B] hover:bg-[#0A988B]/80 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                className="flex-1 bg-neongreen hover:bg-neongreen_dark disabled:bg-gray-600 disabled:cursor-not-allowed text-cyberbg font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
               >
                 {isLoading ? (
                   <>
@@ -253,7 +253,7 @@ function App() {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-3 border-2 border-[#0A988B] text-[#0A988B] hover:bg-[#0A988B] hover:text-white font-semibold rounded-lg transition-all duration-200"
+                  className="px-6 py-3 border-2 border-neongreen text-neongreen hover:bg-neongreen hover:text-cyberbg font-semibold rounded-lg transition-all duration-200"
                 >
                   New Screening
                 </button>
@@ -267,7 +267,7 @@ function App() {
             <div className="mb-6 flex justify-end">
               <button
                 onClick={handleDownloadReport}
-                className="bg-[#0A988B] hover:bg-[#0A988B]/80 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center gap-2"
+                className="bg-neongreen hover:bg-neongreen_dark text-cyberbg font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center gap-2"
               >
                 <Download className="w-5 h-5" />
                 Download PDF Report
@@ -279,7 +279,7 @@ function App() {
         )}
       </main>
 
-      <footer className="border-t-2 border-[#0A988B] mt-12 py-6 bg-[#112836]/95 backdrop-blur-sm">
+      <footer className="border-t-2 border-neongreen mt-12 py-6 bg-cyberbg/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
           <p>Finorion - Advanced AI-Powered Sanction Screening & AML Compliance Platform</p>
           <p className="mt-2">Powered by Real-Time Micro Decision Engine</p>

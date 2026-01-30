@@ -32,9 +32,9 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
           <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-[#0A988B]" />
+            <TrendingUp className="w-6 h-6 text-neongreen" />
             Risk Assessment
           </h3>
           <RiskChart
@@ -43,37 +43,37 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
           />
         </div>
 
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
           <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-            <Shield className="w-6 h-6 text-[#0A988B]" />
+            <Shield className="w-6 h-6 text-neongreen" />
             Screening Details
           </h3>
           <div className="space-y-4 text-white">
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Customer ID:</span>
               <span className="font-semibold">{result.customer_id}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Customer Name:</span>
               <span className="font-semibold">{result.customer_name}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Country:</span>
               <span className="font-semibold">{result.customer_country}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Entity Type:</span>
               <span className="font-semibold">{result.entity_type}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Date of Birth:</span>
               <span className="font-semibold">{result.date_of_birth}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Account Number:</span>
               <span className="font-mono text-sm">{result.account_number}</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-[#0A988B]/30">
+            <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
               <span className="text-gray-300">Device IP:</span>
               <span className="font-mono text-sm">{result.device_ip}</span>
             </div>
@@ -88,7 +88,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
           <h4 className="text-lg font-semibold text-white mb-4">Similarity Scores</h4>
           <div className="space-y-4">
             <div>
@@ -98,7 +98,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
               </div>
               <div className="w-full bg-gray-700 rounded-full h-3">
                 <div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#0A988B] to-[#0A988B]/70 transition-all duration-500"
+                  className="h-3 rounded-full bg-gradient-to-r from-neongreen to-neongreen/70 transition-all duration-500"
                   style={{ width: `${result.similarity_score}%` }}
                 ></div>
               </div>
@@ -119,9 +119,9 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
         </div>
 
         {networkAnalysis && (
-          <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+          <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
             <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <Network className="w-5 h-5 text-[#0A988B]" />
+              <Network className="w-5 h-5 text-neongreen" />
               Network Analysis
             </h4>
             <div className="space-y-3 text-white">
@@ -134,12 +134,12 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
                 <span className="font-semibold">{networkAnalysis.networkScore}</span>
               </div>
               {networkAnalysis.riskFactors && networkAnalysis.riskFactors.length > 0 && (
-                <div className="mt-3 pt-3 border-t border-[#0A988B]/30">
+                <div className="mt-3 pt-3 border-t border-neongreen/30">
                   <p className="text-sm text-gray-300 mb-2">Risk Factors:</p>
                   <ul className="space-y-1">
                     {networkAnalysis.riskFactors.map((factor, idx) => (
                       <li key={idx} className="text-sm text-gray-200 flex items-start gap-2">
-                        <span className="text-[#0A988B] mt-1">•</span>
+                        <span className="text-neongreen mt-1">•</span>
                         <span>{factor}</span>
                       </li>
                     ))}
@@ -152,7 +152,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
       </div>
 
       {matches && matches.length > 0 && (
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
           <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-yellow-500" />
             Matched Entities ({matches.length})
@@ -161,11 +161,11 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
             {matches.slice(0, 5).map((match, index) => (
               <div
                 key={index}
-                className="border border-[#0A988B]/40 rounded-lg p-4 bg-[#112836]/30 hover:bg-[#112836]/50 transition-colors"
+                className="border border-neongreen/40 rounded-lg p-4 bg-cyberbg/30 hover:bg-cyberbg/50 transition-colors"
               >
                 <div className="flex justify-between items-start mb-2">
                   <h5 className="text-white font-semibold">{match.name}</h5>
-                  <span className="text-[#0A988B] font-bold text-sm">
+                  <span className="text-neongreen font-bold text-sm">
                     {match.match_score.toFixed(1)}% Match
                   </span>
                 </div>
@@ -206,13 +206,13 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
       )}
 
       {amlFlags && amlFlags.length > 0 && (
-        <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+        <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
           <h4 className="text-lg font-semibold text-white mb-4">AML Flags</h4>
           <div className="space-y-3">
             {amlFlags.map((flag, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 p-3 rounded-lg bg-[#112836]/30 border border-[#0A988B]/20"
+                className="flex items-start gap-3 p-3 rounded-lg bg-cyberbg/30 border border-neongreen/20"
               >
                 <div
                   className={`w-2 h-2 rounded-full mt-1 ${
@@ -247,7 +247,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
         </div>
       )}
 
-      <div className="border-2 border-[#0A988B] rounded-lg p-6 bg-[#112836]/50 backdrop-blur-sm">
+      <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
         <h4 className="text-lg font-semibold text-white mb-4">AI Explanation</h4>
         <pre className="text-sm text-gray-200 whitespace-pre-wrap font-mono leading-relaxed">
           {result.ai_explanation}
