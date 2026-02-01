@@ -23,7 +23,7 @@ export default function RiskChart({ riskPercentage, overallRiskLevel }: RiskChar
 
     ctx.clearRect(0, 0, width, height);
 
-    ctx.strokeStyle = '#2a3d4a';
+    ctx.strokeStyle = '#1a2942';
     ctx.lineWidth = 15;
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
@@ -79,15 +79,15 @@ export default function RiskChart({ riskPercentage, overallRiskLevel }: RiskChar
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-          <span className="text-gray-300">Medium</span>
+          <span className="opacity-70">Medium</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-orange-600"></div>
-          <span className="text-gray-300">High</span>
+          <span className="opacity-70">High</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-600"></div>
-          <span className="text-gray-300">Critical</span>
+          <span className="opacity-70">Critical</span>
         </div>
       </div>
     </div>

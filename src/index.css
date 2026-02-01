@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-cyberbg: #111926;
+    --color-neongreen: #9FEF00;
+    --color-neongreen-dark: #7BC100;
+    --color-neongreen-light: #B0FF1A;
+  }
+
+  body {
+    @apply bg-cyberbg text-white;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply bg-cyberbg text-white;
+  }
+
+  input::placeholder {
+    @apply text-white/60;
+  }
+
+  option {
+    @apply bg-cyberbg text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-neongreen hover:bg-neongreen_dark text-cyberbg font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-neongreen text-neongreen hover:bg-neongreen hover:text-cyberbg font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+  }
+
+  .card {
+    @apply border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none transition-all text-white;
+  }
+
+  .secondary-text {
+    @apply opacity-70;
+  }
+}

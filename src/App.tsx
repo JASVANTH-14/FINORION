@@ -75,7 +75,7 @@ function App() {
             />
             <div>
               <h1 className="text-3xl font-bold tracking-wide">FINORION</h1>
-              <p className="text-sm text-gray-400">Advanced Sanction Screening Platform</p>
+              <p className="text-sm opacity-70">Advanced Sanction Screening Platform</p>
             </div>
           </div>
         </div>
@@ -86,32 +86,32 @@ function App() {
           <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
             <Brain className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Context-Aware</h3>
-            <p className="text-xs text-gray-400">Intelligent Screening</p>
+            <p className="text-xs opacity-70">Intelligent Screening</p>
           </div>
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <Shield className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <Shield className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Explainable AI</h3>
             <p className="text-xs text-gray-400">Clear Reasoning</p>
           </div>
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <Activity className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <Activity className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Adaptive Learning</h3>
-            <p className="text-xs text-gray-400">Continuous Improvement</p>
+            <p className="text-xs opacity-70">Continuous Improvement</p>
           </div>
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <Network className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <Network className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Network Detection</h3>
-            <p className="text-xs text-gray-400">Graph-Based Analysis</p>
+            <p className="text-xs opacity-70">Graph-Based Analysis</p>
           </div>
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <FileCheck className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <FileCheck className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">AML + Sanctions</h3>
-            <p className="text-xs text-gray-400">Comprehensive Check</p>
+            <p className="text-xs opacity-70">Comprehensive Check</p>
           </div>
-          <div className="border border-[#0A988B] rounded-lg p-4 bg-[#112836]/50 backdrop-blur-sm hover:bg-[#112836]/70 transition-all">
-            <Activity className="w-8 h-8 text-[#0A988B] mb-2" />
+          <div className="border border-neongreen rounded-lg p-4 bg-cyberbg/50 backdrop-blur-sm hover:bg-cyberbg/70 transition-all">
+            <Activity className="w-8 h-8 text-neongreen mb-2" />
             <h3 className="text-sm font-semibold">Real-Time Engine</h3>
-            <p className="text-xs text-gray-400">Micro Decisions</p>
+            <p className="text-xs opacity-70">Micro Decisions</p>
           </div>
         </div>
 

@@ -50,35 +50,35 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
           </h3>
           <div className="space-y-4 text-white">
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Customer ID:</span>
+              <span className="opacity-70">Customer ID:</span>
               <span className="font-semibold">{result.customer_id}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Customer Name:</span>
+              <span className="opacity-70">Customer Name:</span>
               <span className="font-semibold">{result.customer_name}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Country:</span>
+              <span className="opacity-70">Country:</span>
               <span className="font-semibold">{result.customer_country}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Entity Type:</span>
+              <span className="opacity-70">Entity Type:</span>
               <span className="font-semibold">{result.entity_type}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Date of Birth:</span>
+              <span className="opacity-70">Date of Birth:</span>
               <span className="font-semibold">{result.date_of_birth}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Account Number:</span>
+              <span className="opacity-70">Account Number:</span>
               <span className="font-mono text-sm">{result.account_number}</span>
             </div>
             <div className="flex justify-between items-center pb-3 border-b border-neongreen/30">
-              <span className="text-gray-300">Device IP:</span>
+              <span className="opacity-70">Device IP:</span>
               <span className="font-mono text-sm">{result.device_ip}</span>
             </div>
             <div className="flex justify-between items-center pb-3">
-              <span className="text-gray-300">Screening Time:</span>
+              <span className="opacity-70">Screening Time:</span>
               <span className="text-sm">
                 {new Date(result.screening_timestamp).toLocaleString()}
               </span>
@@ -126,19 +126,19 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
             </h4>
             <div className="space-y-3 text-white">
               <div className="flex justify-between">
-                <span className="text-gray-300">Direct Matches:</span>
+                <span className="opacity-70">Direct Matches:</span>
                 <span className="font-semibold">{networkAnalysis.directMatches}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-300">Network Score:</span>
+                <span className="opacity-70">Network Score:</span>
                 <span className="font-semibold">{networkAnalysis.networkScore}</span>
               </div>
               {networkAnalysis.riskFactors && networkAnalysis.riskFactors.length > 0 && (
                 <div className="mt-3 pt-3 border-t border-neongreen/30">
-                  <p className="text-sm text-gray-300 mb-2">Risk Factors:</p>
+                  <p className="text-sm opacity-70 mb-2">Risk Factors:</p>
                   <ul className="space-y-1">
                     {networkAnalysis.riskFactors.map((factor, idx) => (
-                      <li key={idx} className="text-sm text-gray-200 flex items-start gap-2">
+                      <li key={idx} className="text-sm opacity-70 flex items-start gap-2">
                         <span className="text-neongreen mt-1">•</span>
                         <span>{factor}</span>
                       </li>
@@ -171,19 +171,19 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div>
-                    <span className="text-gray-400">Type: </span>
+                    <span className="opacity-70">Type: </span>
                     <span className="text-white">{match.type}</span>
                   </div>
                   <div>
-                    <span className="text-gray-400">Country: </span>
+                    <span className="opacity-70">Country: </span>
                     <span className="text-white">{match.country}</span>
                   </div>
                   <div>
-                    <span className="text-gray-400">List: </span>
+                    <span className="opacity-70">List: </span>
                     <span className="text-white">{match.sanction_list}</span>
                   </div>
                   <div>
-                    <span className="text-gray-400">Risk: </span>
+                    <span className="opacity-70">Risk: </span>
                     <span
                       className={`font-semibold ${
                         match.risk_level === 'critical'
@@ -222,7 +222,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
                       ? 'bg-orange-500'
                       : flag.severity === 'medium'
                       ? 'bg-yellow-500'
-                      : 'bg-gray-500'
+                      : 'bg-white/50'
                   }`}
                 ></div>
                 <div>
@@ -234,7 +234,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
                         ? 'text-orange-400'
                         : flag.severity === 'medium'
                         ? 'text-yellow-400'
-                        : 'text-gray-400'
+                        : 'opacity-70'
                     }`}
                   >
                     [{flag.severity.toUpperCase()}]
@@ -249,7 +249,7 @@ export default function ResultsDisplay({ result }: ResultsDisplayProps) {
 
       <div className="border-2 border-neongreen rounded-lg p-6 bg-cyberbg/50 backdrop-blur-sm">
         <h4 className="text-lg font-semibold text-white mb-4">AI Explanation</h4>
-        <pre className="text-sm text-gray-200 whitespace-pre-wrap font-mono leading-relaxed">
+        <pre className="text-sm opacity-70 whitespace-pre-wrap font-mono leading-relaxed">
           {result.ai_explanation}
         </pre>
       </div>
