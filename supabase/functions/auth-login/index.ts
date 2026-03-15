@@ -104,7 +104,9 @@ async function hashPassword(password: string): Promise<string> {
   const data = encoder.encode(password + "salt");
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return "$2y$10$" + btoa(hashArray.map((b) => String.fromCharCode(b)).join(""));
+  const binaryString = hashArray.map((b) => String.fromCharCode(b)).join("");
+  const base64Hash = btoa(binaryString);
+  return "$2y$10$" + base64Hash;
 }
 
 async function verifyPassword(password: string, hash: string): Promise<boolean> {
