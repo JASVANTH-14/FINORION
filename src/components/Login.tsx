@@ -69,8 +69,8 @@ export default function Login({ onLoginSuccess }: LoginProps) {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter username"
-                className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none focus:shadow-lg focus:shadow-neongreen/30 transition-all text-white placeholder-white/30 uppercase tracking-wide"
+                placeholder="admin"
+                className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none focus:shadow-lg focus:shadow-neongreen/30 transition-all text-white placeholder-white/30 tracking-wide"
                 disabled={isLoading}
                 autoComplete="username"
               />
@@ -84,7 +84,7 @@ export default function Login({ onLoginSuccess }: LoginProps) {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder="12345678"
                 className="w-full px-4 py-3 bg-cyberbg border-2 border-neongreen/50 rounded-lg focus:border-neongreen focus:outline-none focus:shadow-lg focus:shadow-neongreen/30 transition-all text-white placeholder-white/30"
                 disabled={isLoading}
                 autoComplete="current-password"

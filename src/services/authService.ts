@@ -42,14 +42,15 @@ class AuthService {
   public async login(credentials: LoginCredentials): Promise<AuthSession> {
     const clientIp = await this.getClientIp();
     const userAgent = navigator.userAgent;
+    const normalizedUsername = credentials.username.toLowerCase();
 
     if (this.isRateLimited()) {
       await this.logAuditEvent({
-        username: credentials.username,
+        username: normalizedUsername,
         authStatus: 'failure',
         ipAddress: clientIp,
         userAgent,
-        isAdminAttempt: credentials.username === 'admin',
+        isAdminAttempt: normalizedUsername === 'admin',
         failureReason: 'rate_limited',
       });
       throw new Error('Too many login attempts. Please try again later.');
@@ -63,7 +64,10 @@ class AuthService {
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(credentials),
+        body: JSON.stringify({
+          username: normalizedUsername,
+          password: credentials.password,
+        }),
       });
 
       const data = await response.json();
@@ -73,11 +77,11 @@ class AuthService {
 
         const failureReason = data.reason || 'invalid_username';
         await this.logAuditEvent({
-          username: credentials.username,
+          username: normalizedUsername,
           authStatus: 'failure',
           ipAddress: clientIp,
           userAgent,
-          isAdminAttempt: credentials.username === 'admin',
+          isAdminAttempt: normalizedUsername === 'admin',
           failureReason,
         });
 
@@ -96,7 +100,7 @@ class AuthService {
       localStorage.setItem('auth_timestamp', Date.now().toString());
 
       await this.logAuditEvent({
-        username: credentials.username,
+        username: normalizedUsername,
         authStatus: 'success',
         ipAddress: clientIp,
         userAgent,
@@ -108,6 +112,14 @@ class AuthService {
       if (error instanceof Error && error.message.includes('rate_limited')) {
         throw error;
       }
+      await this.logAuditEvent({
+        username: normalizedUsername,
+        authStatus: 'failure',
+        ipAddress: clientIp,
+        userAgent,
+        isAdminAttempt: normalizedUsername === 'admin',
+        failureReason: 'system_error',
+      });
       throw new Error('Authentication failed. Please check your credentials.');
     }
   }
