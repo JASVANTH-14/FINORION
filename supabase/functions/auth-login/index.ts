@@ -61,7 +61,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const passwordValid = await verifyPassword(password, user.password_hash);
+    const passwordValid = password === user.password;
 
     if (!passwordValid) {
       return new Response(
@@ -99,17 +99,3 @@ Deno.serve(async (req: Request) => {
   }
 });
 
-async function hashPassword(password: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password + "salt");
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const binaryString = hashArray.map((b) => String.fromCharCode(b)).join("");
-  const base64Hash = btoa(binaryString);
-  return "$2y$10$" + base64Hash;
-}
-
-async function verifyPassword(password: string, hash: string): Promise<boolean> {
-  const computedHash = await hashPassword(password);
-  return computedHash === hash;
-}

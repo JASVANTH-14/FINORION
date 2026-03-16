@@ -32,8 +32,6 @@ Deno.serve(async (req: Request) => {
     const adminExists = Array.isArray(users) && users.some((u: { username: string }) => u.username === "admin");
 
     if (!adminExists) {
-      const bcryptHash = await hashPassword("12345678");
-
       await fetch(`${supabaseUrl}/rest/v1/users`, {
         method: "POST",
         headers: {
@@ -43,7 +41,7 @@ Deno.serve(async (req: Request) => {
         },
         body: JSON.stringify({
           username: "admin",
-          password_hash: bcryptHash,
+          password: "12345678",
           is_admin: true,
           is_active: true,
         }),
@@ -61,11 +59,3 @@ Deno.serve(async (req: Request) => {
     );
   }
 });
-
-async function hashPassword(password: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password + "salt");
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return "$2y$10$" + btoa(hashArray.map((b) => String.fromCharCode(b)).join(""));
-}
