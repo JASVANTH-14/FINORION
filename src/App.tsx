@@ -1,16 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Search, Download, Shield, Activity, Brain, Network, FileCheck, LogOut } from 'lucide-react';
+import { useState } from 'react';
+import { Search, Download, Shield, Activity, Brain, Network, FileCheck } from 'lucide-react';
 import { performScreening } from './services/screeningService';
 import { getDeviceIP } from './utils/ipUtils';
 import { generatePDFReport } from './utils/pdfGenerator';
-import { authService } from './services/authService';
 import ResultsDisplay from './components/ResultsDisplay';
-import Login from './components/Login';
 import { ScreeningResult } from './lib/supabase';
 import logoImage from '/public/whatsapp_image_2025-12-16_at_19.41.38_61d2c9de.jpg';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [customerId, setCustomerId] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [customerCountry, setCustomerCountry] = useState('');
@@ -19,12 +16,6 @@ function App() {
   const [accountNumber, setAccountNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<ScreeningResult | null>(null);
-
-  useEffect(() => {
-    if (authService.isAuthenticated()) {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   const handleScreening = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,48 +63,19 @@ function App() {
     setAccountNumber('');
   };
 
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
-  };
-
-  const handleLogout = async () => {
-    await authService.logout();
-    setIsAuthenticated(false);
-    setResult(null);
-    setCustomerId('');
-    setCustomerName('');
-    setCustomerCountry('');
-    setEntityType('');
-    setDateOfBirth('');
-    setAccountNumber('');
-  };
-
-  if (!isAuthenticated) {
-    return <Login onLoginSuccess={handleLoginSuccess} />;
-  }
-
   return (
     <div className="min-h-screen bg-cyberbg text-white">
       <header className="border-b-2 border-neongreen bg-cyberbg/95 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <img
-              src={logoImage}
-              alt="Finorion Logo"
-              className="w-14 h-14 object-contain"
-            />
-            <div>
-              <h1 className="text-3xl font-bold tracking-wide">FINORION</h1>
-              <p className="text-sm opacity-70">Advanced Sanction Screening Platform</p>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
+          <img
+            src={logoImage}
+            alt="Finorion Logo"
+            className="w-14 h-14 object-contain"
+          />
+          <div>
+            <h1 className="text-3xl font-bold tracking-wide">FINORION</h1>
+            <p className="text-sm opacity-70">Advanced Sanction Screening Platform</p>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 border border-neongreen text-neongreen hover:bg-neongreen hover:text-cyberbg rounded-lg transition-all duration-200 text-sm font-medium"
-          >
-            <LogOut className="w-4 h-4" />
-            LOGOUT
-          </button>
         </div>
       </header>
 
